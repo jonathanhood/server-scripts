@@ -43,7 +43,7 @@ if [ "$ACTION" == "backup" ]; then
     rsync -Aax $OWNCLOUD_CONFIG $BACKUP_CONFIG/owncloud-config_`date +"%Y%m%d"`/
 
     # Backup mysql by doing a dump
-    mysqldump --lock-tables -h localhost -u $MYSQL_USER -p $MYSQL_PASS owncloud > $BACKUP_MYSQL/owncloud-mysql_`date +"%Y%m%d"`.bak
+    mysqldump --lock-tables -h localhost -u $MYSQL_USER -p$MYSQL_PASS owncloud > $BACKUP_MYSQL/owncloud-mysql_`date +"%Y%m%d"`.bak
 fi
 
 # Cleanup old backups

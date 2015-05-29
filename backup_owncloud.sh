@@ -54,7 +54,11 @@ if [ "$ACTION" == "cleanup" ]; then
 
         if [ "$BACKUP_COUNT" -gt "$BACKUPS_TO_KEEP" ]; then
             NUM_BACKUPS_TO_REMOVE=`expr $BACKUP_COUNT - $BACKUPS_TO_KEEP`
-            ls $DIRECTORY | tail -n $NUM_BACKUPS_TO_REMOVE | xargs rm -rf
+            ITEMS_TO_REMOVE=`ls $DIRECTORY | head -n $NUM_BACKUPS_TO_REMOVE`
+
+	    for item in $ITEMS_TO_REMOVE; do
+		rm -rf $DIRECTORY/$item
+	    done
         fi
     }
 
